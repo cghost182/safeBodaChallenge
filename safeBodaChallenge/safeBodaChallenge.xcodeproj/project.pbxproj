@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC00234067DD0099D276 /* AppDelegate.swift */; };
-		C312BC03234067DD0099D276 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC02234067DD0099D276 /* ViewController.swift */; };
+		C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC02234067DD0099D276 /* SearchFlightsViewController.swift */; };
 		C312BC06234067DD0099D276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312BC04234067DD0099D276 /* Main.storyboard */; };
 		C312BC08234067DF0099D276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312BC07234067DF0099D276 /* Assets.xcassets */; };
 		C312BC0B234067DF0099D276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312BC09234067DF0099D276 /* LaunchScreen.storyboard */; };
 		C312BC16234067DF0099D276 /* safeBodaChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */; };
+		C323F88E23407D56001F7342 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88D23407D56001F7342 /* Airport.swift */; };
+		C323F89023408078001F7342 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88F23408078001F7342 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +30,7 @@
 /* Begin PBXFileReference section */
 		C312BBFD234067DD0099D276 /* safeBodaChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = safeBodaChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C312BC00234067DD0099D276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C312BC02234067DD0099D276 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C312BC02234067DD0099D276 /* SearchFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightsViewController.swift; sourceTree = "<group>"; };
 		C312BC05234067DD0099D276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C312BC07234067DF0099D276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C312BC0A234067DF0099D276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +38,8 @@
 		C312BC11234067DF0099D276 /* safeBodaChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = safeBodaChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeBodaChallengeTests.swift; sourceTree = "<group>"; };
 		C312BC17234067DF0099D276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C323F88D23407D56001F7342 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		C323F88F23408078001F7342 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +82,12 @@
 			isa = PBXGroup;
 			children = (
 				C312BC00234067DD0099D276 /* AppDelegate.swift */,
-				C312BC02234067DD0099D276 /* ViewController.swift */,
-				C312BC04234067DD0099D276 /* Main.storyboard */,
-				C312BC07234067DF0099D276 /* Assets.xcassets */,
-				C312BC09234067DF0099D276 /* LaunchScreen.storyboard */,
 				C312BC0C234067DF0099D276 /* Info.plist */,
+				C323F88823407218001F7342 /* Interface */,
+				C312BC22234071670099D276 /* Models */,
+				C323F88923407234001F7342 /* ViewControllers */,
+				C323F88C23407258001F7342 /* Utilities */,
+				C312BC21234071410099D276 /* Resources */,
 			);
 			path = safeBodaChallenge;
 			sourceTree = "<group>";
@@ -94,6 +99,47 @@
 				C312BC17234067DF0099D276 /* Info.plist */,
 			);
 			path = safeBodaChallengeTests;
+			sourceTree = "<group>";
+		};
+		C312BC21234071410099D276 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C312BC07234067DF0099D276 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C312BC22234071670099D276 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C323F88D23407D56001F7342 /* Airport.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C323F88823407218001F7342 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				C312BC04234067DD0099D276 /* Main.storyboard */,
+				C312BC09234067DF0099D276 /* LaunchScreen.storyboard */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		C323F88923407234001F7342 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C312BC02234067DD0099D276 /* SearchFlightsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C323F88C23407258001F7342 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C323F88F23408078001F7342 /* NetworkManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,7 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C312BC03234067DD0099D276 /* ViewController.swift in Sources */,
+				C323F88E23407D56001F7342 /* Airport.swift in Sources */,
+				C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */,
+				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
