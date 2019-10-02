@@ -15,6 +15,9 @@
 		C312BC16234067DF0099D276 /* safeBodaChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */; };
 		C323F88E23407D56001F7342 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88D23407D56001F7342 /* Airport.swift */; };
 		C323F89023408078001F7342 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88F23408078001F7342 /* NetworkManager.swift */; };
+		C323F89223445CFE001F7342 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89123445CFE001F7342 /* AccessToken.swift */; };
+		C323F894234460D2001F7342 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F893234460D2001F7342 /* Schedules.swift */; };
+		C323F896234469A2001F7342 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F895234469A2001F7342 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		C312BC17234067DF0099D276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C323F88D23407D56001F7342 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		C323F88F23408078001F7342 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C323F89123445CFE001F7342 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		C323F893234460D2001F7342 /* Schedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
+		C323F895234469A2001F7342 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				C323F88D23407D56001F7342 /* Airport.swift */,
+				C323F89123445CFE001F7342 /* AccessToken.swift */,
+				C323F893234460D2001F7342 /* Schedules.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				C323F88F23408078001F7342 /* NetworkManager.swift */,
+				C323F895234469A2001F7342 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -243,10 +252,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C323F894234460D2001F7342 /* Schedules.swift in Sources */,
 				C323F88E23407D56001F7342 /* Airport.swift in Sources */,
 				C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */,
 				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
+				C323F89223445CFE001F7342 /* AccessToken.swift in Sources */,
+				C323F896234469A2001F7342 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

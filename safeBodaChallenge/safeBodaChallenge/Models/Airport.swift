@@ -56,14 +56,6 @@ struct AirportObj : Codable{
     let Position : AirportPosition
     let CityCode : String
     let CountryCode : String
-
-    enum CodingKeys : CodingKey {
-        case AirportCode
-        case Position
-        case CityCode
-        case CountryCode
-    }
-
 }
 
 struct AirportPosition : Codable {
