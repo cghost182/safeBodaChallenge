@@ -11,40 +11,94 @@ import UIKit
 class SearchFlightsViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet weak var testInputTxt: UITextField!
+    
+    @IBOutlet weak var originButton: CornerRadiusButton!
+    @IBOutlet weak var destinationButton: CornerRadiusButton!
+    @IBOutlet weak var airportsPicker: UIPickerView!
+    @IBOutlet weak var airportsPickerBottomConstraint: NSLayoutConstraint!
+    
     
     //MARK: - Variables
     var networkManager : NetworkManager!
+    private var airportsArray : [String] = ["TXL","BOG","AUS"]
+    private var optionSelected : AirportType = .origin
+    private var airportPickerVisible = false
+    
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkManager = NetworkManager(delegate: self)        
+        airportsPicker.delegate = self
+        airportsPicker.dataSource = self
+        airportsPickerBottomConstraint.constant = airportsPicker.frame.height
+    }
+    
+    
+    //MARK: - Private methods
+    
+    private func showAirportPicker( type : AirportType ){
+        optionSelected = type
+        airportsPicker.isHidden = false
+        toggleDataPicker()
+    }
+    
+    private func setAirportSelection(airportCode : String){
+        if optionSelected == .origin {
+            originButton.setTitle(airportCode, for: .normal)
+        }else{
+            destinationButton.setTitle(airportCode, for: .normal)
+        }
+        
+        toggleDataPicker()
+    }
+    
+    private func toggleDataPicker(){
+        
+        UIView.animate(withDuration: 0.4, animations: {
+            self.airportsPickerBottomConstraint.constant = self.airportPickerVisible ? self.airportsPicker.frame.height : 0
+            self.airportPickerVisible = !self.airportPickerVisible
+            self.view.layoutIfNeeded()
+        }) { (finished: Bool) in
+            self.airportsPicker.isHidden = !self.airportPickerVisible
+        }
     }
 
     //MARK: - Actions
     
-    @IBAction func testAirportsRequest(_ sender: Any) {
-        let testTxt = testInputTxt.text
-        networkManager.requestAccessToken()
-        networkManager.requestAirports(testTxt)
-        networkManager.requestSchedules(originAirport: "ZRH", destinationAirport: "FRA", flightDate: "2019-11-05")
+    @IBAction func airportOptionTapped(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            showAirportPicker(type: .origin)
+        case 1:
+            showAirportPicker(type: .destination)
+        default:
+            break
+        }
+        
+    }
+    @IBAction func searchTapped(_ sender: Any) {
     }
     
 }
 
-// This will be moved to the respective viewModel
-extension SearchFlightsViewController : NetworkDelegate{
-    
-    func didRetrieveAirports(_ data: AirportResponse) {
-        print("Airports call success")
+extension SearchFlightsViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    func didRetrieveSchedules(_ data: Schedules) {
-        print("Schedules call success")
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return airportsArray.count
     }
     
-    func didFailWithError(_ error: Error) {
-        print("failed")
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return airportsArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        setAirportSelection(airportCode: airportsArray[row])
     }
     
 }
+
+

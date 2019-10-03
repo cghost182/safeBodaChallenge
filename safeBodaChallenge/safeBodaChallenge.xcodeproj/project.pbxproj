@@ -18,6 +18,8 @@
 		C323F89223445CFE001F7342 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89123445CFE001F7342 /* AccessToken.swift */; };
 		C323F894234460D2001F7342 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F893234460D2001F7342 /* Schedules.swift */; };
 		C323F896234469A2001F7342 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F895234469A2001F7342 /* Extensions.swift */; };
+		C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8972345AC2C001F7342 /* CustomViews.swift */; };
+		C323F89A2345C7D4001F7342 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8992345C7D4001F7342 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		C323F89123445CFE001F7342 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		C323F893234460D2001F7342 /* Schedules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		C323F895234469A2001F7342 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C323F8972345AC2C001F7342 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		C323F8992345C7D4001F7342 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 			children = (
 				C323F88F23408078001F7342 /* NetworkManager.swift */,
 				C323F895234469A2001F7342 /* Extensions.swift */,
+				C323F8972345AC2C001F7342 /* CustomViews.swift */,
+				C323F8992345C7D4001F7342 /* Enums.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -257,7 +263,9 @@
 				C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */,
 				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
+				C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */,
 				C323F89223445CFE001F7342 /* AccessToken.swift in Sources */,
+				C323F89A2345C7D4001F7342 /* Enums.swift in Sources */,
 				C323F896234469A2001F7342 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
