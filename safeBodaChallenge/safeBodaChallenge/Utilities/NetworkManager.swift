@@ -15,7 +15,7 @@ protocol NetworkDelegate {
 }
 
 final class NetworkManager {
-    private var token = "9arv7cvcc27wdn2xky9xekxm"
+    private var token = "2e9pht9skz78za4jrh9h32xk"
     private var delegate : NetworkDelegate?
     private let apiLufthansaHost = "api.lufthansa.com"
     private let developerLufthansaHost = "developer.lufthansa.com"
@@ -32,7 +32,7 @@ final class NetworkManager {
     /**
      Performs the request to retrieve the access token.
      */
-    func requestAccessToken() {
+    func requestAccessToken(completionBlock: @escaping () -> Void) {
         
         let parameters = [
             "apiId": "3166",
@@ -43,6 +43,7 @@ final class NetworkManager {
         
         runDataTaskForRequest(developerLufthansaHost, path : "io-docs/getoauth2accesstoken" , parameters: parameters){ [weak self] (data) in
             self?.handleAccessTokenResponse(data: data)
+            completionBlock()
         }
         
     }
@@ -53,16 +54,16 @@ final class NetworkManager {
      */
     func requestAirports(_ airportCode : String? = ""){
         
-        let path = String(format: "v1/mds-references/airports/%@", airportCode!)
-        let parameters = [
-            "limit": "4",
-            "offset" : "0",
-            "LHoperated" : "0"
-        ]
-        
-        runDataTaskForRequest(apiLufthansaHost, path: path, parameters: parameters){ [weak self] (data) in
-            self?.handleAirportsResponse(data: data)
-        }
+            let path = String(format: "v1/mds-references/airports/%@", airportCode!)
+            let parameters = [
+                "limit": "10",
+                "offset" : "0",
+                "LHoperated" : "0"
+            ]
+            
+            self.runDataTaskForRequest(self.apiLufthansaHost, path: path, parameters: parameters){ [weak self] (data) in
+                self?.handleAirportsResponse(data: data)
+            }
     }
     
     /**
@@ -128,10 +129,12 @@ final class NetworkManager {
     
     /**
      Helper method to run requests. Notifies on failure via delegate.
-     - parameter url: The `URL` to perform the data task.
+     - parameter host: The main URL address
+     - parameter path: Specific request address for a call
+     - parameter parameters: Query parameters to append to the call
      - parameter completionBlock: A block to call when the request is successful and data has been retrieved.
      */
-    private func runDataTaskForRequest(_ host : String, path: String,   parameters: [String: String], completionBlock: @escaping (Data) -> Void) {
+    private func runDataTaskForRequest(_ host : String, path: String, parameters: [String: String], completionBlock: @escaping (Data) -> Void) {
         
         var urlComponents = self.urlComponents
         urlComponents.host = host

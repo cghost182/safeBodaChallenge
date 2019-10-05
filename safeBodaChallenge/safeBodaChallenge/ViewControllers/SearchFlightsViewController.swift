@@ -16,10 +16,11 @@ class SearchFlightsViewController: UIViewController {
     @IBOutlet weak var destinationButton: CornerRadiusButton!
     @IBOutlet weak var airportsPicker: UIPickerView!
     @IBOutlet weak var airportsPickerBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var airportsPickerContainer: UIView!
     
     
     //MARK: - Variables
-    var networkManager : NetworkManager!
+    var searchFlightsViewModel : SearchFlightsViewModel!
     private var airportsArray : [String] = ["TXL","BOG","AUS"]
     private var optionSelected : AirportType = .origin
     private var airportPickerVisible = false
@@ -29,9 +30,11 @@ class SearchFlightsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchFlightsViewModel = SearchFlightsViewModel(delegate: self)
+        searchFlightsViewModel.requestAirports()
         airportsPicker.delegate = self
         airportsPicker.dataSource = self
-        airportsPickerBottomConstraint.constant = airportsPicker.frame.height
+        airportsPickerBottomConstraint.constant = airportsPickerContainer.frame.height
     }
     
     
@@ -39,7 +42,7 @@ class SearchFlightsViewController: UIViewController {
     
     private func showAirportPicker( type : AirportType ){
         optionSelected = type
-        airportsPicker.isHidden = false
+        airportsPickerContainer.isHidden = false
         toggleDataPicker()
     }
     
@@ -56,11 +59,11 @@ class SearchFlightsViewController: UIViewController {
     private func toggleDataPicker(){
         
         UIView.animate(withDuration: 0.4, animations: {
-            self.airportsPickerBottomConstraint.constant = self.airportPickerVisible ? self.airportsPicker.frame.height : 0
+            self.airportsPickerBottomConstraint.constant = self.airportPickerVisible ? self.airportsPickerContainer.frame.height : 0
             self.airportPickerVisible = !self.airportPickerVisible
             self.view.layoutIfNeeded()
         }) { (finished: Bool) in
-            self.airportsPicker.isHidden = !self.airportPickerVisible
+            self.airportsPickerContainer.isHidden = !self.airportPickerVisible
         }
     }
 
@@ -77,7 +80,13 @@ class SearchFlightsViewController: UIViewController {
         }
         
     }
+    
     @IBAction func searchTapped(_ sender: Any) {
+    }
+    
+    @IBAction func closePicker(_ sender: Any) {
+        let rowSelected = airportsPicker.selectedRow(inComponent: 0)
+        setAirportSelection(airportCode: airportsArray[rowSelected])
     }
     
 }
@@ -96,9 +105,29 @@ extension SearchFlightsViewController : UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        setAirportSelection(airportCode: airportsArray[row])
     }
     
 }
 
 
+extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
+    func setAirports(airports:[AirportObj]) {
+        airportsArray = airports.map({ $0.AirportCode })
+        DispatchQueue.main.async {
+            self.airportsPicker.reloadAllComponents()
+        }
+        
+    }
+    
+    func setSchedules() {
+        //do something
+    }
+    
+    func presentErrorMessage(error :Error){
+        let errorAlert = UIAlertController(title: "Opps!", message: error.localizedDescription, preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        navigationController?.present(errorAlert, animated: true, completion: nil)
+    }
+    
+    
+}

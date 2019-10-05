@@ -20,6 +20,7 @@
 		C323F896234469A2001F7342 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F895234469A2001F7342 /* Extensions.swift */; };
 		C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8972345AC2C001F7342 /* CustomViews.swift */; };
 		C323F89A2345C7D4001F7342 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8992345C7D4001F7342 /* Enums.swift */; };
+		C323F89E2346EF95001F7342 /* SearchFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		C323F895234469A2001F7342 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C323F8972345AC2C001F7342 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		C323F8992345C7D4001F7342 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				C323F88823407218001F7342 /* Interface */,
 				C312BC22234071670099D276 /* Models */,
 				C323F88923407234001F7342 /* ViewControllers */,
+				C323F89C23464248001F7342 /* ViewModels */,
 				C323F88C23407258001F7342 /* Utilities */,
 				C312BC21234071410099D276 /* Resources */,
 			);
@@ -155,6 +158,14 @@
 				C323F8992345C7D4001F7342 /* Enums.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C323F89C23464248001F7342 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			files = (
 				C323F894234460D2001F7342 /* Schedules.swift in Sources */,
 				C323F88E23407D56001F7342 /* Airport.swift in Sources */,
+				C323F89E2346EF95001F7342 /* SearchFlightsViewModel.swift in Sources */,
 				C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */,
 				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
