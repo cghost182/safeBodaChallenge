@@ -21,6 +21,9 @@
 		C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8972345AC2C001F7342 /* CustomViews.swift */; };
 		C323F89A2345C7D4001F7342 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8992345C7D4001F7342 /* Enums.swift */; };
 		C323F89E2346EF95001F7342 /* SearchFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */; };
+		C323F8A023484CE6001F7342 /* SchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89F23484CE6001F7342 /* SchedulesViewController.swift */; };
+		C323F8A823485B0C001F7342 /* SchedulesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */; };
+		C323F8A923485B0D001F7342 /* SchedulesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C323F8A723485B0C001F7342 /* SchedulesTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,9 @@
 		C323F8972345AC2C001F7342 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		C323F8992345C7D4001F7342 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightsViewModel.swift; sourceTree = "<group>"; };
+		C323F89F23484CE6001F7342 /* SchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewController.swift; sourceTree = "<group>"; };
+		C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesTableViewCell.swift; sourceTree = "<group>"; };
+		C323F8A723485B0C001F7342 /* SchedulesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchedulesTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,7 @@
 				C312BC0C234067DF0099D276 /* Info.plist */,
 				C323F88823407218001F7342 /* Interface */,
 				C312BC22234071670099D276 /* Models */,
+				C323F8A123485967001F7342 /* Views */,
 				C323F88923407234001F7342 /* ViewControllers */,
 				C323F89C23464248001F7342 /* ViewModels */,
 				C323F88C23407258001F7342 /* Utilities */,
@@ -137,6 +144,7 @@
 			children = (
 				C312BC04234067DD0099D276 /* Main.storyboard */,
 				C312BC09234067DF0099D276 /* LaunchScreen.storyboard */,
+				C323F8A723485B0C001F7342 /* SchedulesTableViewCell.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				C312BC02234067DD0099D276 /* SearchFlightsViewController.swift */,
+				C323F89F23484CE6001F7342 /* SchedulesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -166,6 +175,14 @@
 				C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C323F8A123485967001F7342 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +268,7 @@
 			files = (
 				C312BC0B234067DF0099D276 /* LaunchScreen.storyboard in Resources */,
 				C312BC08234067DF0099D276 /* Assets.xcassets in Resources */,
+				C323F8A923485B0D001F7342 /* SchedulesTableViewCell.xib in Resources */,
 				C312BC06234067DD0099D276 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,8 +294,10 @@
 				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
 				C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */,
+				C323F8A023484CE6001F7342 /* SchedulesViewController.swift in Sources */,
 				C323F89223445CFE001F7342 /* AccessToken.swift in Sources */,
 				C323F89A2345C7D4001F7342 /* Enums.swift in Sources */,
+				C323F8A823485B0C001F7342 /* SchedulesTableViewCell.swift in Sources */,
 				C323F896234469A2001F7342 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

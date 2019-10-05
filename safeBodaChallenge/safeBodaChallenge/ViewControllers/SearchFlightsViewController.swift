@@ -20,10 +20,14 @@ class SearchFlightsViewController: UIViewController {
     
     
     //MARK: - Variables
+    
     var searchFlightsViewModel : SearchFlightsViewModel!
+    var schedulesViewController : SchedulesViewController!
     private var airportsArray : [String] = ["TXL","BOG","AUS"]
     private var optionSelected : AirportType = .origin
     private var airportPickerVisible = false
+    private var originAirportSelectedCode = ""
+    private var destinationAirportSelectedCode = ""
     
     
     //MARK: - Lifecycle
@@ -32,6 +36,7 @@ class SearchFlightsViewController: UIViewController {
         super.viewDidLoad()
         searchFlightsViewModel = SearchFlightsViewModel(delegate: self)
         searchFlightsViewModel.requestAirports()
+        schedulesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "schedulesView") as? SchedulesViewController
         airportsPicker.delegate = self
         airportsPicker.dataSource = self
         airportsPickerBottomConstraint.constant = airportsPickerContainer.frame.height
@@ -48,8 +53,10 @@ class SearchFlightsViewController: UIViewController {
     
     private func setAirportSelection(airportCode : String){
         if optionSelected == .origin {
+            originAirportSelectedCode = airportCode
             originButton.setTitle(airportCode, for: .normal)
         }else{
+            destinationAirportSelectedCode = airportCode
             destinationButton.setTitle(airportCode, for: .normal)
         }
         
@@ -65,6 +72,20 @@ class SearchFlightsViewController: UIViewController {
         }) { (finished: Bool) in
             self.airportsPickerContainer.isHidden = !self.airportPickerVisible
         }
+    }
+    
+    private func presentSchedulesView(schedules : [Schedule]){
+        schedulesViewController.schedulesArray = schedules
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(self.schedulesViewController, animated: true)
+        }
+        
+    }
+    
+    private func presentAlertMessage(message : String){
+        let errorAlert = UIAlertController(title: "Opps!", message: message, preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        navigationController?.present(errorAlert, animated: true, completion: nil)
     }
 
     //MARK: - Actions
@@ -82,6 +103,13 @@ class SearchFlightsViewController: UIViewController {
     }
     
     @IBAction func searchTapped(_ sender: Any) {
+        
+        if ( originAirportSelectedCode == "" || destinationAirportSelectedCode == "" ){
+            presentAlertMessage(message: "Please select origin and destination")
+            return
+        }
+        
+        searchFlightsViewModel.requestSchedules(originAirport: originAirportSelectedCode, destinationAirport: destinationAirportSelectedCode, flightDate: "2019-11-24")
     }
     
     @IBAction func closePicker(_ sender: Any) {
@@ -116,18 +144,14 @@ extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
         DispatchQueue.main.async {
             self.airportsPicker.reloadAllComponents()
         }
-        
     }
     
-    func setSchedules() {
-        //do something
+    func setSchedules(schedules : [Schedule]) {
+        presentSchedulesView(schedules : schedules)
     }
     
     func presentErrorMessage(error :Error){
-        let errorAlert = UIAlertController(title: "Opps!", message: error.localizedDescription, preferredStyle: .alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        navigationController?.present(errorAlert, animated: true, completion: nil)
+        presentAlertMessage(message: error.localizedDescription)
     }
-    
     
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol SearchFlightsViewModelDelegate: class {
     func setAirports(airports : [AirportObj])
-    func setSchedules()
+    func setSchedules(schedules : [Schedule])
     func presentErrorMessage(error : Error)
 }
 
@@ -34,11 +34,15 @@ class SearchFlightsViewModel : NSObject {
         switch data.AirportResource.Airports.Airport {
         case .array(let array):
             airports = array
-        case .object(let string):
-            airports.append(string)
+        case .object(let airport):
+            airports.append(airport)
         }
         
         delegate?.setAirports(airports : airports)
+    }
+    
+    func requestSchedules(originAirport: String, destinationAirport: String, flightDate: String){
+        networkManager.requestSchedules(originAirport: originAirport, destinationAirport: destinationAirport, flightDate: flightDate)
     }
     
 }
@@ -50,7 +54,7 @@ extension SearchFlightsViewModel : NetworkDelegate {
     }
     
     func didRetrieveSchedules(_ data: Schedules) {
-        // do something
+        delegate?.setSchedules(schedules: data.ScheduleResource.Schedule)
     }
     
     func didFailWithError(_ error: Error) {
