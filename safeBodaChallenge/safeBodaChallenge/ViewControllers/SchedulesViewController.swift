@@ -18,16 +18,53 @@ class SchedulesViewController : UIViewController {
     //MARK: - Variables
     
     var schedulesArray : [Schedule] = []
+    var originAirportCoordinates : FlightCoordinate!
+    var destinationAirportCoordinates : FlightCoordinate!
+    private var mapViewController : MapViewController!
+    private var indexScheduleSelected : IndexPath?
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Schedules"
         schedulesTableView.delegate = self
         schedulesTableView.dataSource = self
         schedulesTableView.register(UINib(nibName: "SchedulesTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "scheduleTableCell")
+        mapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mapView") as? MapViewController
     }
-
+    
+    //MARK: - Public methods
+    
+    public func setDetails(originAirportCoordinates : FlightCoordinate , destinationAirportCoordinates : FlightCoordinate){
+        self.originAirportCoordinates = originAirportCoordinates
+        self.destinationAirportCoordinates = destinationAirportCoordinates
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func selectScheduleAction(_ sender: Any) {
+        var flightDetails : [String:String] = [:]
+        
+        if let indexScheduleSelected = indexScheduleSelected {
+            let selectedCell = schedulesTableView.cellForRow(at: indexScheduleSelected) as? SchedulesTableViewCell
+           
+            flightDetails["originAirport"] = selectedCell?.originAirportLbl.text
+            flightDetails["destinationAirport"] = selectedCell?.destinationAirportLbl.text
+            flightDetails["departureTime"] = selectedCell?.departureTimeLbl.text
+            flightDetails["arrivalTime"] = selectedCell?.arrivalTimeLbl.text
+            flightDetails["duration"] = selectedCell?.flightDurationLbl.text
+            
+            mapViewController.setDetails(originAirportCoordinates: self.originAirportCoordinates, destinationAirportCoordinates: self.destinationAirportCoordinates, flightDetails: flightDetails)
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(self.mapViewController, animated: true)
+            }
+        }else{
+            presentAlertMessage(message: "Please select one schedule",navigationController: navigationController!)
+        }        
+        
+    }
+    
 }
 
 extension SchedulesViewController : UITableViewDelegate, UITableViewDataSource {
@@ -42,6 +79,7 @@ extension SchedulesViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexScheduleSelected = indexPath
         let cell = tableView.cellForRow(at: indexPath) as! SchedulesTableViewCell
         cell.selectCell()
     }

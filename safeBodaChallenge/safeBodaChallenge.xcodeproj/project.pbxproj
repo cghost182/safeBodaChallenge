@@ -24,6 +24,9 @@
 		C323F8A023484CE6001F7342 /* SchedulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89F23484CE6001F7342 /* SchedulesViewController.swift */; };
 		C323F8A823485B0C001F7342 /* SchedulesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */; };
 		C323F8A923485B0D001F7342 /* SchedulesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C323F8A723485B0C001F7342 /* SchedulesTableViewCell.xib */; };
+		C323F8AD23499D2E001F7342 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8AC23499D2E001F7342 /* MapViewController.swift */; };
+		C323F8AF2349A748001F7342 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8AE2349A748001F7342 /* Utils.swift */; };
+		C323F8B12349C1BD001F7342 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8B02349C1BC001F7342 /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		C323F89F23484CE6001F7342 /* SchedulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesViewController.swift; sourceTree = "<group>"; };
 		C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulesTableViewCell.swift; sourceTree = "<group>"; };
 		C323F8A723485B0C001F7342 /* SchedulesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchedulesTableViewCell.xib; sourceTree = "<group>"; };
+		C323F8AC23499D2E001F7342 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C323F8AE2349A748001F7342 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C323F8B02349C1BC001F7342 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,7 @@
 			children = (
 				C312BC02234067DD0099D276 /* SearchFlightsViewController.swift */,
 				C323F89F23484CE6001F7342 /* SchedulesViewController.swift */,
+				C323F8AC23499D2E001F7342 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -165,6 +172,7 @@
 				C323F895234469A2001F7342 /* Extensions.swift */,
 				C323F8972345AC2C001F7342 /* CustomViews.swift */,
 				C323F8992345C7D4001F7342 /* Enums.swift */,
+				C323F8AE2349A748001F7342 /* Utils.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				C323F89D2346EF95001F7342 /* SearchFlightsViewModel.swift */,
+				C323F8B02349C1BC001F7342 /* MapViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -290,12 +299,15 @@
 				C323F894234460D2001F7342 /* Schedules.swift in Sources */,
 				C323F88E23407D56001F7342 /* Airport.swift in Sources */,
 				C323F89E2346EF95001F7342 /* SearchFlightsViewModel.swift in Sources */,
+				C323F8AF2349A748001F7342 /* Utils.swift in Sources */,
 				C312BC03234067DD0099D276 /* SearchFlightsViewController.swift in Sources */,
 				C323F89023408078001F7342 /* NetworkManager.swift in Sources */,
 				C312BC01234067DD0099D276 /* AppDelegate.swift in Sources */,
+				C323F8AD23499D2E001F7342 /* MapViewController.swift in Sources */,
 				C323F8982345AC2C001F7342 /* CustomViews.swift in Sources */,
 				C323F8A023484CE6001F7342 /* SchedulesViewController.swift in Sources */,
 				C323F89223445CFE001F7342 /* AccessToken.swift in Sources */,
+				C323F8B12349C1BD001F7342 /* MapViewModel.swift in Sources */,
 				C323F89A2345C7D4001F7342 /* Enums.swift in Sources */,
 				C323F8A823485B0C001F7342 /* SchedulesTableViewCell.swift in Sources */,
 				C323F896234469A2001F7342 /* Extensions.swift in Sources */,

@@ -23,6 +23,7 @@ class SearchFlightsViewController: UIViewController {
     
     var searchFlightsViewModel : SearchFlightsViewModel!
     var schedulesViewController : SchedulesViewController!
+    private var airports:[AirportObj] = []
     private var airportsArray : [String] = ["TXL","BOG","AUS"]
     private var optionSelected : AirportType = .origin
     private var airportPickerVisible = false
@@ -75,18 +76,19 @@ class SearchFlightsViewController: UIViewController {
     }
     
     private func presentSchedulesView(schedules : [Schedule]){
+        let originAirportSelected = airports.filter({$0.AirportCode == originAirportSelectedCode}).first
+        let destinationAirportSelected = airports.filter({$0.AirportCode == destinationAirportSelectedCode}).first
+        
         schedulesViewController.schedulesArray = schedules
+        schedulesViewController.originAirportCoordinates = (Latitude : originAirportSelected?.Position.Coordinate.Latitude, Longitude : originAirportSelected?.Position.Coordinate.Longitude) as? FlightCoordinate
+        schedulesViewController.destinationAirportCoordinates = (Latitude : destinationAirportSelected?.Position.Coordinate.Latitude, Longitude : destinationAirportSelected?.Position.Coordinate.Longitude) as? FlightCoordinate
+        
         DispatchQueue.main.async {
             self.navigationController?.pushViewController(self.schedulesViewController, animated: true)
         }
         
     }
     
-    private func presentAlertMessage(message : String){
-        let errorAlert = UIAlertController(title: "Opps!", message: message, preferredStyle: .alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        navigationController?.present(errorAlert, animated: true, completion: nil)
-    }
 
     //MARK: - Actions
     
@@ -105,7 +107,7 @@ class SearchFlightsViewController: UIViewController {
     @IBAction func searchTapped(_ sender: Any) {
         
         if ( originAirportSelectedCode == "" || destinationAirportSelectedCode == "" ){
-            presentAlertMessage(message: "Please select origin and destination")
+            presentAlertMessage(message: "Please select origin and destination",navigationController: navigationController!)
             return
         }
         
@@ -140,6 +142,7 @@ extension SearchFlightsViewController : UIPickerViewDelegate, UIPickerViewDataSo
 
 extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
     func setAirports(airports:[AirportObj]) {
+        self.airports = airports
         airportsArray = airports.map({ $0.AirportCode })
         DispatchQueue.main.async {
             self.airportsPicker.reloadAllComponents()
@@ -151,7 +154,7 @@ extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
     }
     
     func presentErrorMessage(error :Error){
-        presentAlertMessage(message: error.localizedDescription)
+        presentAlertMessage(message: error.localizedDescription, navigationController: navigationController!)
     }
     
 }
