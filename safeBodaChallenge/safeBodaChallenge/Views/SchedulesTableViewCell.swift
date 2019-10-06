@@ -49,6 +49,14 @@ class SchedulesTableViewCell: UITableViewCell {
         self.flightDurationLbl.text = schedule.TotalJourney.Duration.components(separatedBy: "T")[1]
     }
     
+    func selectCell(){
+        self.radioButtonImg.tintColor = #colorLiteral(red: 0.9308201075, green: 0.5834892392, blue: 0.336384505, alpha: 1)
+    }
+    
+    func deSelectCell(){
+        self.radioButtonImg.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.628130351)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

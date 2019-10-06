@@ -41,5 +41,15 @@ extension SchedulesViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SchedulesTableViewCell
+        cell.selectCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! SchedulesTableViewCell
+        cell.deSelectCell()
+    }
+    
     
 }
