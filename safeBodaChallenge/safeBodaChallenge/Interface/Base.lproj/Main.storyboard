@@ -113,43 +113,22 @@
                                                             <constraint firstAttribute="width" constant="30" id="95t-g3-nl9"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="js3-JJ-wqM">
-                                                        <rect key="frame" x="35" y="0.0" width="339" height="40"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0vB-iD-8xJ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="01S-yN-xIC">
-                                                                <rect key="frame" x="113" y="0.0" width="113" height="40"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="DD" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsN-nV-RGS">
-                                                                <rect key="frame" x="226" y="0.0" width="113" height="40"/>
-                                                                <nil key="textColor"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="YsN-nV-RGS" firstAttribute="width" secondItem="0vB-iD-8xJ" secondAttribute="width" id="DmZ-NE-gAT"/>
-                                                            <constraint firstItem="01S-yN-xIC" firstAttribute="width" secondItem="0vB-iD-8xJ" secondAttribute="width" id="Xci-1j-qEK"/>
-                                                        </constraints>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2019-11-24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpT-JC-caZ">
+                                                        <rect key="frame" x="40" y="0.0" width="334" height="40"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="KpT-JC-caZ" secondAttribute="trailing" id="6mv-JP-k7W"/>
                                                     <constraint firstItem="Sg8-Dn-QdU" firstAttribute="leading" secondItem="dI0-Mi-GSH" secondAttribute="leading" id="HlE-wB-94n"/>
                                                     <constraint firstAttribute="bottom" secondItem="Sg8-Dn-QdU" secondAttribute="bottom" id="IYZ-Ca-Ued"/>
-                                                    <constraint firstAttribute="bottom" secondItem="js3-JJ-wqM" secondAttribute="bottom" id="RD2-gk-GyI"/>
+                                                    <constraint firstItem="KpT-JC-caZ" firstAttribute="leading" secondItem="Sg8-Dn-QdU" secondAttribute="trailing" constant="10" id="W4n-jv-xvC"/>
                                                     <constraint firstItem="Sg8-Dn-QdU" firstAttribute="top" secondItem="dI0-Mi-GSH" secondAttribute="top" id="Zpy-0Q-gUA"/>
-                                                    <constraint firstItem="js3-JJ-wqM" firstAttribute="top" secondItem="dI0-Mi-GSH" secondAttribute="top" id="f7p-xa-Ytq"/>
-                                                    <constraint firstAttribute="trailing" secondItem="js3-JJ-wqM" secondAttribute="trailing" id="hnz-nH-r6E"/>
-                                                    <constraint firstItem="js3-JJ-wqM" firstAttribute="leading" secondItem="Sg8-Dn-QdU" secondAttribute="trailing" constant="5" id="yj0-Qx-cCY"/>
+                                                    <constraint firstItem="KpT-JC-caZ" firstAttribute="top" secondItem="dI0-Mi-GSH" secondAttribute="top" id="f4P-pM-Nlm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="KpT-JC-caZ" secondAttribute="bottom" id="uOA-GE-lPF"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -203,7 +182,7 @@
                                     </toolbar>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDw-Ak-F0C">
                                         <rect key="frame" x="0.0" y="45" width="414" height="200"/>
-                                        <color key="backgroundColor" white="0.7901683789954338" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.92694157361984253" green="0.57965266704559326" blue="0.3329598605632782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="nku-gr-7yY"/>

@@ -73,7 +73,20 @@ struct ScheduledTimeLocal : Codable {
 }
 
 struct Terminal : Codable {
-    let Name : Int
+    let Name : String
+    
+    private enum CodingKeys: String, CodingKey {
+        case Name = "Name"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let value = try? container.decode(Int.self, forKey: .Name) {
+            Name = String(value)
+        } else {
+            Name = try container.decode(String.self, forKey: .Name)
+        }
+    }
 }
 
 struct MarketingCarrier : Codable {

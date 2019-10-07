@@ -31,11 +31,17 @@ class SearchFlightsViewController: UIViewController {
     var schedulesViewController : SchedulesViewController!
     var activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
     private var airports:[AirportObj] = []
-    private var airportsArray : [String] = ["TXL","BOG","AUS"]
+    private var airportsArray : [String] = []
+    private var originAirportsArray : [String] = ["TXL","BOG","FRA"]
+    private var destinationAirportsArray : [String] = ["JFK","ZRH","AUS"]
+    private var originAirportsNamesArray : [String] = ["Berlin","Bogota","Frankfurt"]
+    private var destinationAirportsNamesArray : [String] = ["New York","Zurich","Austin"]
     private var optionSelected : AirportType = .origin
     private var airportPickerVisible = false
     private var originAirportSelectedCode = ""
     private var destinationAirportSelectedCode = ""
+    private var originAirportSelected : AirportObj?
+    private var destinationAirportSelected : AirportObj?
     
     
     //MARK: - Lifecycle
@@ -43,7 +49,8 @@ class SearchFlightsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchFlightsViewModel = SearchFlightsViewModel(delegate: self)
-        searchFlightsViewModel.requestAirports()
+        searchFlightsViewModel.requestAccessToken()
+        
         schedulesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "schedulesView") as? SchedulesViewController
         airportsPicker.delegate = self
         airportsPicker.dataSource = self
@@ -53,10 +60,7 @@ class SearchFlightsViewController: UIViewController {
         showActivityIndicator()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
+
     //MARK: - Private methods
     
     private func setDefaultConfiguration(){
@@ -72,18 +76,30 @@ class SearchFlightsViewController: UIViewController {
     private func showAirportPicker( type : AirportType ){
         optionSelected = type
         airportsPickerContainer.isHidden = false
+        airportsPicker.reloadAllComponents()
         toggleDataPicker()
     }
     
-    private func setAirportSelection(airportCode : String){
-        if optionSelected == .origin {
-            originAirportSelectedCode = airportCode
-            originButton.setTitle(airportCode, for: .normal)
-        }else{
-            destinationAirportSelectedCode = airportCode
-            destinationButton.setTitle(airportCode, for: .normal)
+    private func setAirportSelection(airportSelectedIndex : Int){
+        showActivityIndicator()
+        
+        var airportCode = ""
+        
+        DispatchQueue.main.async {
+            self.view.isUserInteractionEnabled = false
         }
         
+        if optionSelected == .origin {
+            airportCode = originAirportsArray[airportSelectedIndex]
+            originAirportSelectedCode = airportCode
+            originButton.setTitle(originAirportsNamesArray[airportSelectedIndex], for: .normal)
+        }else{
+            airportCode = destinationAirportsArray[airportSelectedIndex]
+            destinationAirportSelectedCode = airportCode
+            destinationButton.setTitle(destinationAirportsNamesArray[airportSelectedIndex], for: .normal)
+        }
+        
+        searchFlightsViewModel.requestAirport(airportCode: airportCode)
         toggleDataPicker()
     }
     
@@ -99,32 +115,36 @@ class SearchFlightsViewController: UIViewController {
     }
     
     private func showElements(){
-        searchBoxContainer.isHidden = false
-        searchButton.isHidden = false
         
-        UIView.animate(withDuration: 0.4, animations: {
-            self.searchBoxTopConstraint.constant =  20
-            self.searchButtonBottomConstraint.constant = 0
-            self.view.layoutIfNeeded()
-        })
+        DispatchQueue.main.async {
+            self.searchBoxContainer.isHidden = false
+            self.searchButton.isHidden = false
+            
+            UIView.animate(withDuration: 0.4, animations: {
+                self.searchBoxTopConstraint.constant =  20
+                self.searchButtonBottomConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            })
+        }
+        
     }
     
     private func hideElements(){
         
-        UIView.animate(withDuration: 0.4, animations: {
-            self.searchBoxTopConstraint.constant = -self.searchBoxContainer.frame.height
-            self.searchButtonBottomConstraint.constant = 50
-            self.view.layoutIfNeeded()
-        }) { (finished : Bool) in
-            self.searchBoxContainer.isHidden = true
-            self.searchButton.isHidden = true
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.searchBoxTopConstraint.constant = -self.searchBoxContainer.frame.height
+                self.searchButtonBottomConstraint.constant = 50
+                self.view.layoutIfNeeded()
+            }) { (finished : Bool) in
+                self.searchBoxContainer.isHidden = true
+                self.searchButton.isHidden = true
+            }
         }
     }
     
     private func presentSchedulesView(schedules : [Schedule]){
-        let originAirportSelected = airports.filter({$0.AirportCode == originAirportSelectedCode}).first
-        let destinationAirportSelected = airports.filter({$0.AirportCode == destinationAirportSelectedCode}).first
-        
+
         schedulesViewController.schedulesArray = schedules
         schedulesViewController.originAirportCoordinates = (Latitude : originAirportSelected?.Position.Coordinate.Latitude, Longitude : originAirportSelected?.Position.Coordinate.Longitude) as? FlightCoordinate
         schedulesViewController.destinationAirportCoordinates = (Latitude : destinationAirportSelected?.Position.Coordinate.Latitude, Longitude : destinationAirportSelected?.Position.Coordinate.Longitude) as? FlightCoordinate
@@ -145,13 +165,17 @@ class SearchFlightsViewController: UIViewController {
     }
     
     private func showActivityIndicator() {
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
     }
     
     private func hideActivityIndicator() {
-        activityIndicator.isHidden = true
-        activityIndicator.stopAnimating()
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
     }
     
 
@@ -160,8 +184,10 @@ class SearchFlightsViewController: UIViewController {
     @IBAction func airportOptionTapped(_ sender: UIButton) {
         switch sender.tag {
         case 0:
+            airportsArray = originAirportsNamesArray
             showAirportPicker(type: .origin)
         case 1:
+            airportsArray = destinationAirportsNamesArray
             showAirportPicker(type: .destination)
         default:
             break
@@ -184,7 +210,7 @@ class SearchFlightsViewController: UIViewController {
     
     @IBAction func closePicker(_ sender: Any) {
         let rowSelected = airportsPicker.selectedRow(inComponent: 0)
-        setAirportSelection(airportCode: airportsArray[rowSelected])
+        setAirportSelection(airportSelectedIndex: rowSelected)
     }
     
 }
@@ -209,14 +235,24 @@ extension SearchFlightsViewController : UIPickerViewDelegate, UIPickerViewDataSo
 
 
 extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
+    func didSetAccessToken(){
+        self.showElements()
+        self.hideActivityIndicator()
+    }
+    
     func setAirports(airports:[AirportObj]) {
-        self.airports = airports
-        airportsArray = airports.map({ $0.AirportCode })
         DispatchQueue.main.async {
-            self.airportsPicker.reloadAllComponents()
-            self.showElements()
-            self.hideActivityIndicator()
+            self.view.isUserInteractionEnabled = true
         }
+        
+        if optionSelected == .origin {
+            originAirportSelected = airports.first
+        }else{
+            destinationAirportSelected = airports.first
+        }
+        
+        hideActivityIndicator()
+        
     }
     
     func setSchedules(schedules : [Schedule]) {
@@ -225,6 +261,11 @@ extension SearchFlightsViewController : SearchFlightsViewModelDelegate {
     
     func presentErrorMessage(error :Error){
         presentAlertMessage(message: error.localizedDescription, navigationController: navigationController!)
+        DispatchQueue.main.async {
+            self.showElements()
+            self.hideActivityIndicator()
+        }
+
     }
     
 }

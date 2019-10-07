@@ -34,6 +34,9 @@ class SchedulesViewController : UIViewController {
         mapViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mapView") as? MapViewController
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        schedulesTableView.reloadData()
+    }
     //MARK: - Public methods
     
     public func setDetails(originAirportCoordinates : FlightCoordinate , destinationAirportCoordinates : FlightCoordinate){

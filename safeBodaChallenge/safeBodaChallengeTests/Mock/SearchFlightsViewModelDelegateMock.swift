@@ -26,5 +26,7 @@ class SearchFlightsViewModelDelegateMock : SearchFlightsViewModelDelegate {
         
     }
     
-    
+    func didSetAccessToken() {
+        
+    }
 }

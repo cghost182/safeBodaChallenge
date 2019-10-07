@@ -9,6 +9,7 @@
 import Foundation
 
 protocol SearchFlightsViewModelDelegate: class {
+    func didSetAccessToken()
     func setAirports(airports : [AirportObj])
     func setSchedules(schedules : [Schedule])
     func presentErrorMessage(error : Error)
@@ -24,8 +25,18 @@ class SearchFlightsViewModel : NSObject {
         networkManager = NetworkManager(delegate: self)
     }
     
-    func requestAirports( ){
+    func requestAccessToken(){
+        networkManager.requestAccessToken { [weak self] in
+            self?.delegate?.didSetAccessToken()
+        }
+    }
+    
+    func requestAirports(){
         networkManager.requestAirports()
+    }
+    
+    func requestAirport(airportCode : String){
+        networkManager.requestAirports(airportCode)
     }
     
     func processAirportsResponse(data: AirportResponse){
