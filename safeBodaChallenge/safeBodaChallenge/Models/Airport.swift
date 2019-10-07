@@ -11,12 +11,11 @@ import Foundation
 
 struct AirportResponse : Codable {
     let AirportResource : AirportResource
-    
-    struct AirportResource : Codable {
-        let Airports : Airports
-    }
 }
 
+struct AirportResource : Codable {
+    let Airports : Airports
+}
 
 struct Airports : Codable {
     let Airport : Airport

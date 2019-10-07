@@ -12,7 +12,6 @@
 		C312BC06234067DD0099D276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312BC04234067DD0099D276 /* Main.storyboard */; };
 		C312BC08234067DF0099D276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C312BC07234067DF0099D276 /* Assets.xcassets */; };
 		C312BC0B234067DF0099D276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C312BC09234067DF0099D276 /* LaunchScreen.storyboard */; };
-		C312BC16234067DF0099D276 /* safeBodaChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */; };
 		C323F88E23407D56001F7342 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88D23407D56001F7342 /* Airport.swift */; };
 		C323F89023408078001F7342 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F88F23408078001F7342 /* NetworkManager.swift */; };
 		C323F89223445CFE001F7342 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F89123445CFE001F7342 /* AccessToken.swift */; };
@@ -27,6 +26,11 @@
 		C323F8AD23499D2E001F7342 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8AC23499D2E001F7342 /* MapViewController.swift */; };
 		C323F8AF2349A748001F7342 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8AE2349A748001F7342 /* Utils.swift */; };
 		C323F8B12349C1BD001F7342 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8B02349C1BC001F7342 /* MapViewModel.swift */; };
+		C323F8BA234ACF4F001F7342 /* NetworkManagerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8B9234ACF4F001F7342 /* NetworkManagerDelegateMock.swift */; };
+		C323F8BC234ACF6C001F7342 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8BB234ACF6C001F7342 /* NetworkManagerTests.swift */; };
+		C323F8C0234AE53B001F7342 /* SearchFlightsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8BF234AE53B001F7342 /* SearchFlightsViewModelTests.swift */; };
+		C323F8C2234AE586001F7342 /* SearchFlightsViewModelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8C1234AE586001F7342 /* SearchFlightsViewModelDelegateMock.swift */; };
+		C323F8C4234AE904001F7342 /* AirportResponseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C323F8C3234AE904001F7342 /* AirportResponseMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +52,6 @@
 		C312BC0A234067DF0099D276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C312BC0C234067DF0099D276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C312BC11234067DF0099D276 /* safeBodaChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = safeBodaChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = safeBodaChallengeTests.swift; sourceTree = "<group>"; };
 		C312BC17234067DF0099D276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C323F88D23407D56001F7342 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		C323F88F23408078001F7342 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -64,6 +67,11 @@
 		C323F8AC23499D2E001F7342 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		C323F8AE2349A748001F7342 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C323F8B02349C1BC001F7342 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		C323F8B9234ACF4F001F7342 /* NetworkManagerDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManagerDelegateMock.swift; path = safeBodaChallengeTests/Mock/NetworkManagerDelegateMock.swift; sourceTree = SOURCE_ROOT; };
+		C323F8BB234ACF6C001F7342 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkManagerTests.swift; path = safeBodaChallengeTests/Test/NetworkManagerTests.swift; sourceTree = SOURCE_ROOT; };
+		C323F8BF234AE53B001F7342 /* SearchFlightsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightsViewModelTests.swift; sourceTree = "<group>"; };
+		C323F8C1234AE586001F7342 /* SearchFlightsViewModelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFlightsViewModelDelegateMock.swift; sourceTree = "<group>"; };
+		C323F8C3234AE904001F7342 /* AirportResponseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportResponseMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +129,8 @@
 		C312BC14234067DF0099D276 /* safeBodaChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
-				C312BC15234067DF0099D276 /* safeBodaChallengeTests.swift */,
+				C323F8BE234AE507001F7342 /* Mock */,
+				C323F8BD234AE4DA001F7342 /* Test */,
 				C312BC17234067DF0099D276 /* Info.plist */,
 			);
 			path = safeBodaChallengeTests;
@@ -192,6 +201,25 @@
 				C323F8A623485B0C001F7342 /* SchedulesTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C323F8BD234AE4DA001F7342 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				C323F8BB234ACF6C001F7342 /* NetworkManagerTests.swift */,
+				C323F8BF234AE53B001F7342 /* SearchFlightsViewModelTests.swift */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		C323F8BE234AE507001F7342 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				C323F8B9234ACF4F001F7342 /* NetworkManagerDelegateMock.swift */,
+				C323F8C1234AE586001F7342 /* SearchFlightsViewModelDelegateMock.swift */,
+				C323F8C3234AE904001F7342 /* AirportResponseMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +346,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C312BC16234067DF0099D276 /* safeBodaChallengeTests.swift in Sources */,
+				C323F8C0234AE53B001F7342 /* SearchFlightsViewModelTests.swift in Sources */,
+				C323F8BC234ACF6C001F7342 /* NetworkManagerTests.swift in Sources */,
+				C323F8C4234AE904001F7342 /* AirportResponseMock.swift in Sources */,
+				C323F8BA234ACF4F001F7342 /* NetworkManagerDelegateMock.swift in Sources */,
+				C323F8C2234AE586001F7342 /* SearchFlightsViewModelDelegateMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,7 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBCAAE2W3J;
 				INFOPLIST_FILE = safeBodaChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -494,7 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBCAAE2W3J;
 				INFOPLIST_FILE = safeBodaChallenge/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -514,6 +546,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBCAAE2W3J;
 				INFOPLIST_FILE = safeBodaChallengeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,6 +568,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CBCAAE2W3J;
 				INFOPLIST_FILE = safeBodaChallengeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
